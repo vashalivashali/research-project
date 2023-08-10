@@ -25,14 +25,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $password = $_POST["password"];
 
-    // Validate user input (you can add more validation as per your requirements)
+    // Validate user input 
     if (empty($username) || empty($email) || empty($password)) {
         $error_message = "All fields are required.";
     } else {
         // Establish the database connection using the function
         $connection = connectToDatabase();
-
-        // Hash the password before storing it in the database
       
 
         // Insert the user data into the database

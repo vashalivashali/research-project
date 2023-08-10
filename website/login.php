@@ -1,4 +1,8 @@
 <?php
+// Start a session
+session_start();
+
+
 // Function to establish a database connection
 function connectToDatabase() {
     $hostname = 'localhost:3306'; //  database host
@@ -50,9 +54,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($password== $hashedPassword) {
                 // Password matches, login successful
                 $success_message = "Login successful";
+
+                 // Set up session variables
+                $_SESSION['email'] = $email;
+                $_SESSION['loggedin'] = true;
+
+
                 
                 // Redirect to home page URL
-                $redirectUrl = "http://localhost/research-project/website/home.html";
+                $redirectUrl = "http://localhost/research-project/website/home.php";
                 header("Location: $redirectUrl");
                 exit; //exit immediately after the redirect
 

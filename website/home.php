@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+/*if (isset($_SESSION['email'])) {    in order to examine email to login
+    echo "Logged in as: " . $_SESSION['email'];
+} else {
+    echo "Not logged in";
+}*/
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +42,7 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+                    <a class="nav-link active" aria-current="page" href="home.php">Home</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="clothes.html">Clothes</a>
@@ -54,7 +66,7 @@
                 </ul>
                 <div class="other-links">
                 
-                    <button id="btn-signup"><a href="sign_up.php">Sign out</a></button>
+                    <button id="btn-signup"><a href="logout.php">log out</a></button>
         
                     
                     <i class="fa-solid fa-cart-shopping"></i>
