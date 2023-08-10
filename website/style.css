@@ -134,6 +134,8 @@
 }
 .navbar a{
     color: white;
+    text-decoration: none;
+    
 }
 
 /* navbar */
@@ -147,15 +149,18 @@
     z-index: 0;
     font-family: 'Roboto Slab', serif;
 }
-.main .img{
-    flex: 1 1 400px;
-}
-.main .img img{
-    width: 100%;
-}
+
+
 .main .content{
     flex: 1 1 400px;
     margin-top: 30px;
+}
+.main .img{
+   
+        flex: 1 1 400px;  
+}
+.main .img img{
+    width: 100%;
 }
 .content h3{
     margin-left: 70px;
@@ -184,6 +189,7 @@
     background-color: #1c1c50;
     color: white;
 }
+
 @media screen and (max-width:800px){
     .content h3{
         margin-left: 50px;
@@ -247,6 +253,9 @@
     background-color: #1c1c50;
     color: white;
 }
+.card-body .a{
+    color: #1c1c50;
+}
 /* top cards */
 
 
@@ -298,6 +307,15 @@
     color: white;
 }
 /* product cards */
+
+.col-md-6 {
+    flex: 0 0 auto;
+    width: 31%;
+    margin-left: 100px;
+}
+.row {
+    display: flex;
+}
 
 
 /* footer */
@@ -478,6 +496,13 @@ html{
     #rightside input{
         width: 200px;
     }
+}
+
+.login-logo{
+    text-align: center;
+}
+.container-fluid .h2{
+    text-decoration-color: white;
 }
 /* login */
 

@@ -1,0 +1,30 @@
+.row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 0;
+    font-family: 'Roboto Slab', serif;
+}
+.main .img{
+    flex: 1 1 400px;
+}
+.main .img img{
+    width: 200;
+    height: 200px;
+    margin: 80px;
+}
+/* product cards */
+#product-cards{
+    font-family: 'Roboto Slab', serif;
+    margin-top: 300px;
+}
+
+
+.img-fluid {
+    max-width: 100%;
+    height: 361px;
+    width: 300px;
+    margin-left: 122px;
+}

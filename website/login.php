@@ -1,18 +1,18 @@
 <?php
 // Function to establish a database connection
 function connectToDatabase() {
-    $hostname = 'localhost:3306'; // Change this to your database host if it's different
-    $username = 'root'; // Change this to your MySQL username
-    $password = 'Lalita@anil1'; // Change this to your MySQL password
-    $database = 'dbuser'; // Change this to your MySQL database name
+    $hostname = 'localhost:3306'; //  database host
+    $username = 'root'; //  MySQL username
+    $password = 'Database123'; //  MySQL password
+    $database = 'users'; //  database name
 
 
-    // Attempt to establish the connection
+    //establish the connection
     $connection = mysqli_connect($hostname, $username, $password, $database);
 
     // Check connection
     if (!$connection) {
-        die('Connection failed: ' . mysqli_connect_error());
+        die('Connection failed: ' . mysqli_connect_error());// if connection is not establish 
     }
 
     return $connection;
@@ -20,31 +20,50 @@ function connectToDatabase() {
 
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get user input from the registration form
-    $username = $_POST["username"];
+    // Get user input from the login form
     $email = $_POST["email"];
     $password = $_POST["password"];
-
-    // Validate user input (you can add more validation as per your requirements)
-    if (empty($username) || empty($email) || empty($password)) {
-        $error_message = "All fields are required.";
+    //echo "email" . $row["email"]; // to verify is email is fetched or not
+ 
+    // Validate user input as per requiremnet
+    if (empty($email) || empty($password)) {
+        $error_message = "Both email and password are required.";
     } else {
         // Establish the database connection using the function
         $connection = connectToDatabase();
 
-        // Hash the password before storing it in the database
-      
+        
+        // fetch the password of email store in users database , registration table
+        $query = "SELECT password FROM registration WHERE email = '$email'";
+        $result = mysqli_query($connection, $query);
 
-        // Insert the user data into the database
-        $sql = "INSERT INTO users (username, email, password_hash) VALUES ('$username', '$email', '$password')";
+       
+        if ($result && mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+            //echo $row['password'];// to check password is feched or not
+            $hashedPassword = $row["password"];
 
-        // Execute the SQL query
-        if (mysqli_query($connection, $sql)) {
-            // Registration successful
-            $success_message = "User registered successfully.";
+            // to display the password in order to solve the error
+            //echo '\n'. $password .'\n';
+           
+            
+            if ($password== $hashedPassword) {
+                // Password matches, login successful
+                $success_message = "Login successful";
+                
+                // Redirect to home page URL
+                $redirectUrl = "http://localhost/research-project/website/home.html";
+                header("Location: $redirectUrl");
+                exit; //exit immediately after the redirect
+
+
+            } else {
+                // Incorrect password message
+                $error_message = "Incorrect email or password.";
+            }
         } else {
-            // Registration failed
-            $error_message = "Error: " . mysqli_error($connection);
+            // User not found
+            $error_message = "User not found.";
         }
 
         // Close the database connection
@@ -59,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fashion Villa</title>
+    <title>Login Page</title>
     <link rel="shortcut icon" type="image" href="./image/logo2.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
@@ -70,16 +89,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
-    <!-- fonts links -->
+</head>
 </head>
 <body>
-
-
-        <!-- login section -->
-        <div class="login container">
-            <h3><center>Fashion villa </center> </h3>
+     <!-- login section -->
+     <div class="login container">
+            <h3 class="login-logo">Fashion villa </h3>
             <div class="row">
-                <div class="col-md-4" id="leftside">
+                <div class="col-md-4" id="leftside"> <!-- divide page in two column-->
                     <h3>Hello Friend!</h3>
                     <p>Create New Account</p>
                     <div id="btn"><a href="sign_up.php">Sign up</a></div>
@@ -87,21 +104,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="col-md-8" id="rightside">
                     <h3>Login Account</h3>
 
-                    <!-- take customer detail for signup -->
-                    <div class="inpt">
-                    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+   
 
-                        <input type="text"  name="username" placeholder="Name" required>
-                        <input type="email" name="email" placeholder="Email" required>
-                        <input type="password" name="password" placeholder="Password" required>
-                    </form>    
-                    </div>
-                    
-                    <div id="login"><button>LOG IN</button></div>
+    <?php if (isset($error_message)) : ?>
+        <p style="color: red;"><?php echo $error_message; ?></p>
+    <?php endif; ?>
+
+    <?php if (isset($success_message)) : ?>
+        <p style="color: green;"><?php echo $success_message; ?></p>
+    <?php endif; ?>
+    
+
+    
+    
+    <div class="inpt">
+    <form method="post" action="">
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+  
+        
+        <div id="login"><button>LOG IN</button></div>
                     <a href="sign_up.php" class="link">new customer </a>
                 </div>
             </div>
         </div>
-        <!-- login section -->
-  </body>
-  </html>
+    
+        
+    </form>
+    </div>
+</body>
+</html>
