@@ -96,6 +96,7 @@ session_start();
     
 
     <!-- top cards -->
+    
     <div class="container" id="top-cards">
         <div class="row">
             <h1 class="text-center">RECENT NEW PRODUCT</h1>
