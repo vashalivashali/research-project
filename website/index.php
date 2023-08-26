@@ -1,11 +1,6 @@
 <?php
 session_start();
-
-/*if (isset($_SESSION['email'])) {    in order to examine email to login
-    echo "Logged in as: " . $_SESSION['email'];
-} else {
-    echo "Not logged in";
-}*/
+require_once 'config.php'; // Include database connection settings
 ?>
 
 
@@ -18,9 +13,9 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fashion Villa</title>
     <link rel="shortcut icon" type="image" href="./image/logo2.png">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> <!--add styles to website-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <!-- bootstrap links -->
+    <!-- bootstrap links --> 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- bootstrap links -->
     <!-- fonts links -->
@@ -33,16 +28,16 @@ session_start();
 
     <div class="main-section">
         <!-- navbar -->
-        <nav class="navbar navbar-expand-lg" id="navbar">
+        <nav class="navbar navbar-expand-lg" id="navbar"> <!--create nav bar with id navbar   -->
             <div class="container-fluid">
-              <a class="navbar-brand" href="#">Fashion Villa</a>
+              <a class="navbar-brand" href="#">Fashion Villa</a> <!--add website name  -->
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span><i class="fa-solid fa-bars" style="color: white;"></i></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0"> 
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="home.php">Home</a>
+                    <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="clothes.html">Clothes</a>
@@ -69,7 +64,8 @@ session_start();
                     <button id="btn-signup"><a href="logout.php">log out</a></button>
         
                     
-                    <i class="fa-solid fa-cart-shopping"></i>
+                    <a href="cart.php">
+                    <i class="fas fa-cart-shopping"></i> </a>
                 </div>
         
               </div>
@@ -93,59 +89,55 @@ session_start();
             </div>
         </section>
         <!-- main content -->
-    
-
-    <!-- top cards -->
-    
-    <div class="container" id="top-cards">
-        <div class="row">
-            <h1 class="text-center">RECENT NEW PRODUCT</h1>
-            <div class="col-md-5 py-3 py-md-0">
-                <div class="card" style="background-color: #a9a9a926;">
-                    <img src="./image/shoes.jpg" alt="">
-                    <div class="card-img-overlay">
-                        <h5 class="card-titel">Girls Shoes</h5>
+    <!-- Products List -->
+<div class="row">
+    <div class="col-md-12">
+        <h1>Products List</h1>
+        <div class="d-flex flex-wrap"> 
+            <?php
+            $query = "SELECT * FROM products";    // fetch products details from database
+            $product = mysqli_query($con, $query);
+            if (!empty($product)) {   // check the products table is  not empty 
+                while ($row = mysqli_fetch_array($product)) {
+            ?>
+            <div class="card" style="width: 16rem; margin: 10px; height:25rem"> <!-- create cart container to set product list with dimention -->
+                <img class="card-img-top"
+                     src="http://localhost/website<?= $row['image']; ?>"alt="<?= $row['name']; ?>" width="150" height="285">
+                <div class="card-header d-flex justify-content-between">
+                    <span><?= $row['name']; ?></span>                         <!--retrieve name and proce from database   -->
+                    <span>£<?= number_format($row['price'], 2); ?></span>
+                </div>
+                <div class="star">
+                            <i class="fas fa-star checked"></i>
+                            <i class="fas fa-star checked"></i>
+                            <i class="fas fa-star checked"></i>
+                            <i class="fas fa-star checked"></i>
+                            <i class="fas fa-star checked"></i>
+                        </div>
+                <div class="card-body d-flex justify-content-between">
+                    <form action="index.php?action=add&pid=<?= $row['id']; ?>" method="post">
+                        <input type="text" name="quantity" value="1" size="2">             <!--manually adjust the quantity -->
+                        <input type="submit" value="Add to Cart" class="btn btn-success btn-sm"> <!--item store in cart -->
                         
-                        <h5>Rs.700 <br>
-                            £70</h5>
-                            <button id="btn-signup"><a href="product.html">Order Now</a></button>
-    
-                    
-                    </div>
+                    </form>
+                    <form action="cart.php?action=add&pid=<?= $row['id']; ?>" method="post">
+                        <input type="submit" value="Buy Now" class="btn btn-success btn-sm"> <!--buy the product -->
+                        
+                    </form>
                 </div>
             </div>
-            <div class="col-md-4 py-3 py-md-0">
-                <div class="card" style="background-color: #a9a9a926;">
-                    <img src="./image/mshoes.jpg" alt="">
-                    <div class="card-img-overlay">
-                        <h5 class="card-titel">Nike Shoes</h5>
-                        
-                        <h5>Rs.700 <br>
-                            £70</h5>
-                        <button id="btn-signup"><a href="product1.html">Order Now</a></button>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 py-3 py-md-0">
-                <div class="card" style="background-color: #a9a9a926;">
-                    <img src="./image/b2.jpg" alt="">
-                    <div class="card-img-overlay">
-                        <h5 class="card-titel">Bag</h5>
-                        
-                        <h5>Rs.700 <br>
-                            £70</h5>
-                        <button id="btn-signup"><a href="product2.html">Order Now</a></button>
-
-                    </div>
-                </div>
-            </div>
+            <?php
+                }
+            } else {
+                echo "No products available.";     // product list is empty
+            }
+            ?>
         </div>
     </div>
-    <!-- top cards -->
-    
+</div>
 
-    <!-- product cards -->
+    <!-- another product cards -->
+
     <div class="container" id="product-cards">
         <h1 class="text-center">PRODUCT</h1>
         <div class="row" style="margin-top: 30px;">
@@ -162,8 +154,8 @@ session_start();
                             <i class="fas fa-star checked"></i>
                         </div>
                         
-                        <h5>Rs.700 <br>
-                            £70</h5>
+                        <h5> £70</h5>
+                           
                     </div>
                 </div>
             </div>
@@ -180,8 +172,8 @@ session_start();
                             <i class="fas fa-star checked"></i>
                         </div>
                         
-                        <h5>Rs.700 <br>
-                            £70</h5>
+                        <h5> £70</h5>
+                           
                     </div>
                 </div>
             </div>
@@ -198,8 +190,8 @@ session_start();
                             <i class="fas fa-star checked"></i>
                         </div>
                         
-                        <h5>Rs.500 <br>
-                            £50</h5>
+                        <h5>£50</h5>
+                            
                     </div>
                 </div>
             </div>
@@ -216,8 +208,8 @@ session_start();
                             <i class="fas fa-star checked"></i>
                         </div>
                         
-                        <h5>Rs.800 <br>
-                            £80</h5>
+                        <h5>£80</h5>
+                            
                     </div>
                 </div>
             </div>
@@ -237,8 +229,8 @@ session_start();
                             <i class="fas fa-star checked"></i>
                         </div>
                         
-                        <h5>Rs.700 <br>
-                            £70</h5>
+                        <h5>£70</h5>
+                            
                     </div>
                 </div>
             </div>
@@ -255,8 +247,8 @@ session_start();
                             <i class="fas fa-star checked"></i>
                         </div>
                         
-                        <h5>Rs.700 <br>
-                            £70</h5>
+                        <h5>£70</h5>
+                            
                     </div>
                 </div>
             </div>
@@ -272,8 +264,8 @@ session_start();
                             <i class="fas fa-star checked"></i>
                             <i class="fas fa-star checked"></i>
                         </div>
-                        <h5>Rs.800 <br>
-                        £70</h5>
+                        <h5>£70</h5>
+                        
                     </div>
                 </div>
             </div>
@@ -289,14 +281,14 @@ session_start();
                             <i class="fas fa-star checked"></i>
                             <i class="fas fa-star checked"></i>
                         </div>
-                        <h5>Rs.600 <br>
-                            £60</h5>
+                        <h5> £60</h5>
+                           
                     </div>
                 </div>
             </div>
         </div>
-        <a href="clothe.html" id="viewmorebtn">View More</a>
-    </div>
+        <a href="clothe.html" id="btn-viewmore">View More</a>
+        </div>
     
 
 <!-- footer -->
@@ -318,7 +310,7 @@ session_start();
             <div class="col-lg-3 col-md-6 footer-links">
                 <h4>Usefull Links</h4>
                 <ul>
-                  <li><a href="index.html">Home</a></li>
+                  <li><a href="index.php">Home</a></li>
                   <li><a href="about.html">About</a></li>
                   <li><a href="contact.php">Contact</a></li>
                 </ul>

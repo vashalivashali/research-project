@@ -1,22 +1,5 @@
 <?php
-// Function to establish a database connection
-function connectToDatabase() {
-    $hostname = 'localhost:3306'; // database host 
-    $username = 'root'; //  MySQL username
-    $password = 'Database123'; //  MySQL password
-    $database = 'users'; //  MySQL database name
-
-
-    // Attempt to establish the connection
-    $connection = mysqli_connect($hostname, $username, $password, $database);
-
-    // Check connection
-    if (!$connection) {
-        die('Connection failed: ' . mysqli_connect_error());
-    }
-
-    return $connection;
-}
+require_once 'config.php'; // Include database connection settings
 
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -26,14 +9,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $phone = $_POST["phone"];
     $message = $_POST["message"];
 
-    // Validate user input (can add more validation as per your requirements)
+    // Validate user input based on username,email,phone
     if (empty($username) || empty($email) || empty($phone)) {
         $error_message = "All fields are required.";
     } else {
         // Establish the database connection using the function
         $connection = connectToDatabase();
-
-        // Hash the password before storing it in the database
       
 
         // Insert the user data into the database
@@ -88,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="home.php">Home</a>
+                    <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="clothes.html">Clothes</a>
@@ -115,7 +96,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <button id="btn-signup"><a href="logout.php">Log out</a></button>
         
                     
-                    <i class="fa-solid fa-cart-shopping"></i>
+                    
+                    <a href="cart.php">
+                    <i class="fas fa-cart-shopping"></i> </a>
                 </div>
         
               </div>
@@ -125,14 +108,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- >navbar -->
 
    
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>"> <!-- connect the page with database to store user given data -->
     <div class="container" id="contact">
             <h1 class="text-center">CONTACT US</h1>
-            <div class="row" style="margin-top: 50px;">
+            <div class="row" style="margin-top: 50px;">  
               
-            <div class="row" style="margin-top: 30px;">
+            <div class="row" style="margin-top: 30px;">   <!-- divide the page -->
                 <div class="col-md-4 py-3 py-md-0">
-                    <input type="text" id="name" name="name" class="form-control form-control" placeholder="Name">
+                    <input type="text" id="name" name="name" class="form-control form-control" placeholder="Name"><!--to take name as input from user  -->
                 </div>
                 <div class="col-md-4 py-3 py-md-0">
                     <input type="text" id="email" name="email"  class="form-control form-control" placeholder="Email">
@@ -170,7 +153,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="col-lg-3 col-md-6 footer-links">
                 <h4>Usefull Links</h4>
                 <ul>
-                  <li><a href="home.php">Home</a></li>
+                  <li><a href="index.php">Home</a></li>
                   <li><a href="about.html">About</a></li>
                   <li><a href="contact.html">Contact</a></li>
                 </ul>

@@ -30,7 +30,7 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="home.php">Home</a>
+                    <a class="nav-link active" aria-current="page" href="index.php">Home</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="clothes.html">Clothes</a>
@@ -57,7 +57,9 @@
                     <button id="btn-signup"><a href="logout.php">Log out</a></button>
         
                     
-                    <i class="fa-solid fa-cart-shopping"></i>
+                    <a href="cart.php">
+                        <i class="fas fa-cart-shopping"></i> </a>
+
                 </div>
         
               </div>
@@ -70,7 +72,7 @@
 
 
 
-    <!-- product cards -->
+    <!-- product list -->
     <div class="container" id="product-cards">
         <div class="row" style="margin-top: 30px;">
             <div class="col-md-3 py-3 py-md-0">
@@ -86,8 +88,7 @@
                             <i class="fas fa-star checked"></i>
                         </div>
                         
-                        <h5>Rs. 900<br> 
-                            £90<span>
+                        <h5>£90<span>
                                 
                                 <a class="fa-solid fa-cart-shopping" href="contact.html"></a></span></h5>
                     </div>
@@ -106,8 +107,7 @@
                             <i class="fas fa-star checked"></i>
                         </div>
                         
-                        <h5>Rs. 500<br> 
-                            £50<span><i class="fa-solid fa-cart-shopping"></i></span></h5>
+                        <h5>£50<span><i class="fa-solid fa-cart-shopping"></i></span></h5>
                     </div>
                 </div>
             </div>
@@ -124,8 +124,7 @@
                             <i class="fas fa-star checked"></i>
                         </div>
                         
-                        <h5>Rs. 700<br> 
-                            £70<span><i class="fa-solid fa-cart-shopping"></i></span></h5>
+                        <h5>£70<span><i class="fa-solid fa-cart-shopping"></i></span></h5>
                     </div>
                 </div>
             </div>
@@ -142,8 +141,7 @@
                             <i class="fas fa-star checked"></i>
                         </div>
                         
-                        <h5>Rs. 400<br> 
-                            £40<span><i class="fa-solid fa-cart-shopping"></i></span></h5>
+                        <h5>£40<span><i class="fa-solid fa-cart-shopping"></i></span></h5>
                     </div>
                 </div>
             </div>
@@ -163,8 +161,7 @@
                             <i class="fas fa-star checked"></i>
                         </div>
                         
-                        <h5>Rs. 400<br> 
-                            £40<span><i class="fa-solid fa-cart-shopping"></i></span></h5>
+                        <h5>£40<span><i class="fa-solid fa-cart-shopping"></i></span></h5>
                     </div>
                 </div>
             </div>
@@ -181,8 +178,7 @@
                             <i class="fas fa-star checked"></i>
                         </div>
                         
-                        <h5>Rs. 700<br> 
-                            £0<span><i class="fa-solid fa-cart-shopping"></i></span></h5>
+                        <h5>£70<span><i class="fa-solid fa-cart-shopping"></i></span></h5>
                     </div>
                 </div>
             </div>
@@ -200,8 +196,7 @@
                             <i class="fas fa-star checked"></i>
                         </div>
                         
-                        <h5>Rs. 500<br> 
-                            £50<span><i class="fa-solid fa-cart-shopping"></i></span></h5>
+                        <h5>£50<span><i class="fa-solid fa-cart-shopping"></i></span></h5>
                     </div>
                 </div>
             </div>
@@ -218,8 +213,7 @@
                             <i class="fas fa-star checked"></i>
                         </div>
                         
-                        <h5>Rs. 600<br> 
-                            £60<span><i class="fa-solid fa-cart-shopping"></i></span></h5>
+                        <h5>£60<span><i class="fa-solid fa-cart-shopping"></i></span></h5>
                     </div>
                 </div>
             </div>
@@ -238,8 +232,7 @@
                             <i class="fas fa-star checked"></i>
                         </div>
                         
-                        <h5>Rs. 600<br> 
-                            £60<span><i class="fa-solid fa-cart-shopping"></i></span></h5>
+                        <h5>£60<span><i class="fa-solid fa-cart-shopping"></i></span></h5>
                     </div>
                 </div>
             </div>
@@ -256,8 +249,7 @@
                             <i class="fas fa-star checked"></i>
                         </div>
                         
-                        <h5>Rs. 600<br> 
-                            £60<span><i class="fa-solid fa-cart-shopping"></i></span></h5>
+                        <h5>£60<span><i class="fa-solid fa-cart-shopping"></i></span></h5>
                     </div>
                 </div>
             </div>
@@ -273,8 +265,7 @@
                             <i class="fas fa-star checked"></i>
                             <i class="fas fa-star checked"></i>
                         </div>
-                        <h5>Rs. 600<br> 
-                            £60<span><i class="fa-solid fa-cart-shopping"></i></span></h5>
+                        <h5>£60<span><i class="fa-solid fa-cart-shopping"></i></span></h5>
                     </div>
                 </div>
             </div>
@@ -290,8 +281,7 @@
                             <i class="fas fa-star checked"></i>
                             <i class="fas fa-star checked"></i>
                         </div>
-                        <h5>Rs. 600<br> 
-                            £60<span><i class="fa-solid fa-cart-shopping"></i></span></h5>
+                        <h5>£60<span><i class="fa-solid fa-cart-shopping"></i></span></h5>
                                            </div>
                 </div>
             </div>
@@ -318,7 +308,7 @@
                 <div class="col-lg-3 col-md-6 footer-links">
                     <h4>Usefull Links</h4>
                     <ul>
-                      <li><a href="home.php">Home</a></li>
+                      <li><a href="index.php">Home</a></li>
                       <li><a href="about.html">About</a></li>
                       <li><a href="contact.html">Contact</a></li>
                     </ul>
@@ -327,7 +317,7 @@
                     <h4>Our Services</h4>
                     <p>Best Fashion Collection all the time. Do shopping now.</p>
                     <ul>
-                        <li><a href="clothes.html">Clothe</a></li>
+                        <li><a href="clothes.html">Clothes</a></li>
                         <li><a href="Bags.html">Bags</a></li>
                         <li><a href="shoes.html">shoes</a></li>
                     </ul>

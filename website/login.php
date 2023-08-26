@@ -1,26 +1,15 @@
 <?php
 // Start a session
 session_start();
+require_once 'config.php'; // Include database connection settings
 
 
-// Function to establish a database connection
-function connectToDatabase() {
-    $hostname = 'localhost:3306'; //  database host
-    $username = 'root'; //  MySQL username
-    $password = 'Database123'; //  MySQL password
-    $database = 'users'; //  database name
+if (isset($_SESSION['user_id'])) {
+    // User is logged in
+    $user_id = $_SESSION['user_id']; // save user id in variable
 
-
-    //establish the connection
-    $connection = mysqli_connect($hostname, $username, $password, $database);
-
-    // Check connection
-    if (!$connection) {
-        die('Connection failed: ' . mysqli_connect_error());// if connection is not establish 
-    }
-
-    return $connection;
-}
+    // can use $user_id for further processing
+} 
 
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -62,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 
                 // Redirect to home page URL
-                $redirectUrl = "http://localhost/research-project/website/home.php";
+                $redirectUrl = "http://localhost/research-project/website/index.php";
                 header("Location: $redirectUrl");
                 exit; //exit immediately after the redirect
 
@@ -116,11 +105,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
    
 
-    <?php if (isset($error_message)) : ?>
+    <?php if (isset($error_message)) : ?>  <!-- display error message if password or id is wrong-->
         <p style="color: red;"><?php echo $error_message; ?></p>
     <?php endif; ?>
 
-    <?php if (isset($success_message)) : ?>
+    <?php if (isset($success_message)) : ?>  <!-- display success message -->
         <p style="color: green;"><?php echo $success_message; ?></p>
     <?php endif; ?>
     
