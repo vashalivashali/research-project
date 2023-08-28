@@ -20,15 +20,15 @@ require_once 'config.php'; // Include database connection settings
     <!-- bootstrap links -->
     <!-- fonts links -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  <!-- add copyright --> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">  <!-- add google libraries for style --> 
     <!-- fonts links -->
 </head>
 <body>
 
     <div class="main-section">
         <!-- navbar -->
-        <nav class="navbar navbar-expand-lg" id="navbar"> <!--create nav bar with id navbar   -->
+        <nav class="navbar navbar-expand-lg" id="navbar">
             <div class="container-fluid">
               <a class="navbar-brand" href="#">Fashion Villa</a> <!--add website name  -->
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,7 +46,7 @@ require_once 'config.php'; // Include database connection settings
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Category
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #1c1c50;">
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #1c1c50;"> <!-- create drop down list--> 
                       <li><a class="dropdown-item" href="clothes.html">Clothes</a></li>
                       <li><a class="dropdown-item" href="bags.html">bags</a></li>
                       <li><a class="dropdown-item" href="shoes.html">Shoes</a></li>
@@ -61,7 +61,7 @@ require_once 'config.php'; // Include database connection settings
                 </ul>
                 <div class="other-links">
                 
-                    <button id="btn-signup"><a href="logout.php">log out</a></button>
+                <button id="btn-signup"><a href="sign_up.php">Log Out</a></button>
         
                     
                     <a href="cart.php">
@@ -100,11 +100,11 @@ require_once 'config.php'; // Include database connection settings
             if (!empty($product)) {   // check the products table is  not empty 
                 while ($row = mysqli_fetch_array($product)) {
             ?>
-            <div class="card" style="width: 16rem; margin: 10px; height:25rem"> <!-- create cart container to set product list with dimention -->
-                <img class="card-img-top"
+            <div class="card" style="width: 19rem; margin: 10px; height:25rem"> <!-- create cart container to set product list with dimention -->
+                <img class="card-img-top"            
                      src="http://localhost/website<?= $row['image']; ?>"alt="<?= $row['name']; ?>" width="150" height="285">
                 <div class="card-header d-flex justify-content-between">
-                    <span><?= $row['name']; ?></span>                         <!--retrieve name and proce from database   -->
+                    <span><?= $row['name']; ?></span>
                     <span>£<?= number_format($row['price'], 2); ?></span>
                 </div>
                 <div class="star">
@@ -115,13 +115,9 @@ require_once 'config.php'; // Include database connection settings
                             <i class="fas fa-star checked"></i>
                         </div>
                 <div class="card-body d-flex justify-content-between">
-                    <form action="index.php?action=add&pid=<?= $row['id']; ?>" method="post">
-                        <input type="text" name="quantity" value="1" size="2">             <!--manually adjust the quantity -->
-                        <input type="submit" value="Add to Cart" class="btn btn-success btn-sm"> <!--item store in cart -->
-                        
-                    </form>
                     <form action="cart.php?action=add&pid=<?= $row['id']; ?>" method="post">
-                        <input type="submit" value="Buy Now" class="btn btn-success btn-sm"> <!--buy the product -->
+                        <input type="text" name="quantity" value="1" size="2">             <!--manually adjust the quantity -->
+                        <input type="submit" value="Add to Cart" class="btn btn-success btn-sm">  <!--add items in cart -->
                         
                     </form>
                 </div>
@@ -136,8 +132,7 @@ require_once 'config.php'; // Include database connection settings
     </div>
 </div>
 
-    <!-- another product cards -->
-
+    <!-- another product cards , multiple cart with price, star, image -->
     <div class="container" id="product-cards">
         <h1 class="text-center">PRODUCT</h1>
         <div class="row" style="margin-top: 30px;">
@@ -287,8 +282,8 @@ require_once 'config.php'; // Include database connection settings
                 </div>
             </div>
         </div>
-        <a href="clothe.html" id="btn-viewmore">View More</a>
-        </div>
+        
+    </div>
     
 
 <!-- footer -->
@@ -346,7 +341,7 @@ require_once 'config.php'; // Include database connection settings
 </footer>
 <!-- footer -->
 
-<a href="#" class="arrow"><i><img src="./image/up-arrow.png" alt="" width="50px"></i></a>
+<a href="#" class="arrow"><i><img src="./image/up-arrow.png" alt="" width="50px"></i></a><!--add arrow to page up --> 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
