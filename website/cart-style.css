@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+/* apply style on table */
+.table {  
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+ /* set border padding between data and cell */
+.table th, .table td {  
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.table th {
+    background-color: #f2f2f2;
+}
+ /*  update the image */
+.table img {
+    max-width: 60px;
+    max-height: 60px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+/* apply style on button */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.d-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h3 {
+    margin: 0;
+}
+
+.mb-2 {
+    margin-bottom: 20px;
+}
+
+.mt-3 {
+    margin-top: 30px;
+}
