@@ -92,13 +92,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   </li>
                 </ul>
                 <div class="other-links">
-                
-                    <button id="btn-signup"><a href="logout.php">Log out</a></button>
+                    <button id="btn-login"><a href="login.php">Login</a></button>
+                    <button id="btn-signup"><a href="sign_up.php">Sign up</a></button>
         
-                    
-                    
                     <a href="cart.php">
-                    <i class="fas fa-cart-shopping"></i> </a>
+                    <i class="fa-solid fa-cart-shopping"></i></a>
                 </div>
         
               </div>

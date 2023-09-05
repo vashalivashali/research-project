@@ -1,7 +1,32 @@
 <?php
 // Start a session
 session_start();
-require_once 'config.php'; // Include database connection settings
+
+// Function to establish a database connection
+function connectToDatabase() {
+    $hostname = 'localhost:3306'; //  database host
+    $username = 'root'; //  MySQL username
+    $password = 'Database123'; // MySQL password
+    $database = 'users'; // MySQL database name
+
+
+    // Attempt to establish the connection
+    $connection = mysqli_connect($hostname, $username, $password, $database);
+
+    // Check connection
+    if (!$connection) {
+        die('Connection failed: ' . mysqli_connect_error());
+    }
+
+    return $connection;
+}
+
+ // Establish the database connection using the function
+ $connection = connectToDatabase();
+
+
+
+
 
 
 if (isset($_SESSION['user_id'])) {
@@ -51,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 
                 // Redirect to home page URL
-                $redirectUrl = "http://localhost/research-project/website/index.php";
+                $redirectUrl = "http://localhost/research-project/website/checkout.php";
                 header("Location: $redirectUrl");
                 exit; //exit immediately after the redirect
 
@@ -122,7 +147,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="password" name="password" placeholder="Password" required>
   
         
-        <div id="login"><button>LOG IN</button></div>
+        <div id="login"> <a href="sign_up.php"><button>LOG IN</button></div></a>
                     <a href="sign_up.php" class="link">new customer </a>
                 </div>
             </div>

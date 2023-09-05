@@ -60,12 +60,14 @@ require_once 'config.php'; // Include database connection settings
                   </li>
                 </ul>
                 <div class="other-links">
-                
-                <button id="btn-signup"><a href="sign_up.php">Log Out</a></button>
+                    <button id="btn-login"><a href="login.php">Login</a></button>
+                    <button id="btn-signup"><a href="sign_up.php">Sign up</a></button>
         
-                    
                     <a href="cart.php">
-                    <i class="fas fa-cart-shopping"></i> </a>
+                    <i class="fa-solid fa-cart-shopping"></i></a>
+                </div>
+                    
+                    
                 </div>
         
               </div>
@@ -120,6 +122,9 @@ require_once 'config.php'; // Include database connection settings
                         <input type="submit" value="Add to Cart" class="btn btn-success btn-sm">  <!--add items in cart -->
                         
                     </form>
+                    <!-- Add a button or link to view product details -->
+                    <a href="product<?= $row['id']; ?>.php?pid=<?= $row['id']; ?>" class="btn btn-primary btn-sm">View Details</a>
+                
                 </div>
             </div>
             <?php

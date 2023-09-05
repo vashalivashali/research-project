@@ -1,12 +1,8 @@
-/* give style to whole page */
-
 *{
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 
 .other-links i{
     color:white;
@@ -14,7 +10,29 @@
     margin-left: 10px;
     cursor: pointer;
 }
-/* logout */
+#btn-login{
+    width: 100px;
+    border: 2px solid #1c1c50;
+    color: #1c1c50;
+    font-weight: bold;
+    border-radius: 5px;
+    height: 5vh;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+#btn-login a{
+    text-decoration: none;
+    color: #1c1c50;
+    transition: 0.5s ease;
+}
+#btn-login a:hover{
+    background-color: #1c1c50;
+    color: white;
+}
+#btn-login:hover{
+    background-color: #1c1c50;
+    color: white;
+}
 #btn-signup{
     width: 100px;
     border: 2px solid #1c1c50;
@@ -38,38 +56,43 @@
     background-color: #1c1c50;
     color: white;
 }
-
-/* adjust the icon while change page size */
-@media screen and (max-width:500px){  
+@media screen and (max-width:500px){
     .other-links i{
         font-size: 15px;
     }
-    
+    #btn-login{
+        width: 60px;
+        height: 5vh;
+    }
     #btn-signup{
         width: 70px;
         height: 5vh;
     }
 }
-
-
-/* adjust the icon while change page size */
 @media screen and (max-width:350px){
 
     .other-links i{
         font-size: 10px;
     }
-    
+    #btn-login{
+        width: 50px;
+        height: 5vh;
+        font-size: 13px;
+    }
     #btn-signup{
         width: 60px;
         height: 5vh;
         font-size: 13px;
     }
 }
-
-/* adjust the icon while change page size */
 @media screen and (max-width:350px){
     .other-links i{
         font-size: 12px;
+    }
+    #btn-login{
+        width: 40px;
+        height: 5vh;
+        font-size: 10px;
     }
     #btn-signup{
         width: 50px;
@@ -82,7 +105,7 @@
         background-color: #a9a9a926;
     }
 }
-/* main  section to display product */
+/* main  section */
 .main-section{
     width: 100%;
     height: 18vh;
@@ -111,15 +134,6 @@
 }
 .navbar a{
     color: white;
-    text-decoration: none;
-    
-}
-.navbar .sticky-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: #1c1c50;
-    z-index: 1000;
 }
 
 /* navbar */
@@ -133,18 +147,15 @@
     z-index: 0;
     font-family: 'Roboto Slab', serif;
 }
-
-
-.main .content{
-    flex: 1 1 400px;
-    margin-top: 30px;
-}
 .main .img{
-   
-        flex: 1 1 400px;  
+    flex: 1 1 400px;
 }
 .main .img img{
     width: 100%;
+}
+.main .content{
+    flex: 1 1 400px;
+    margin-top: 30px;
 }
 .content h3{
     margin-left: 70px;
@@ -173,7 +184,6 @@
     background-color: #1c1c50;
     color: white;
 }
-
 @media screen and (max-width:800px){
     .content h3{
         margin-left: 50px;
@@ -237,9 +247,6 @@
     background-color: #1c1c50;
     color: white;
 }
-.card-body .a{
-    color: #1c1c50;
-}
 /* top cards */
 
 
@@ -271,7 +278,7 @@
 .checked{
     color: rgb(255, 187, 0);
 }
-#btn-viewmore{
+#viewmorebtn{
     display: flex;
     justify-content: center;
     margin: auto;
@@ -286,20 +293,11 @@
     border: 2px solid #1c1c50;
     transition: 0.5s ease;
 }
-#btn-viewmore:hover{
+#viewmorebtn:hover{
     background-color: #1c1c50;
     color: white;
 }
 /* product cards */
-
-.col-md-6 {
-    flex: 0 0 auto;
-    width: 31%;
-    margin-left: 100px;
-}
-.row {
-    display: flex;
-}
 
 
 /* footer */
@@ -481,13 +479,6 @@ html{
         width: 200px;
     }
 }
-
-.login-logo{
-    text-align: center;
-}
-.container-fluid .h2{
-    text-decoration-color: white;
-}
 /* login */
 
 /* about */
@@ -544,3 +535,23 @@ html{
     color: white;
 }
 /* contact */
+/* Thank You */
+.main-message {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.message {
+    max-width: 400px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
